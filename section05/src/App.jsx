@@ -1,15 +1,33 @@
 import './App.css';
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
+import { useState } from 'react';
+
+const Bulb = ({ light }) => {
+  return <div>{light === 'ON' ? <h1 style={{ backgroundColor: 'orange' }}>ON</h1> : <h1 style={{ backgroundColor: 'gray' }}>OFF</h1>}</div>;
+};
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [light, setLight] = useState('OFF');
   return (
     <>
-      <Header></Header>
-      <Main></Main>
-      <Footer></Footer>
-      <h1>안녕 리엑트</h1>
+      <div>
+        <Bulb light={light}></Bulb>
+        <button
+          onClick={() => {
+            setLight(light === 'ON' ? 'OFF' : 'ON');
+          }}
+        >
+          {light === 'ON' ? '끄기' : '켜기'}
+        </button>
+      </div>
+      <h1>{count}</h1>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +
+      </button>
     </>
   );
 }
