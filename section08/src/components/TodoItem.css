@@ -1,0 +1,40 @@
+.TodoItem {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.TodoItem > input {
+  cursor: pointer;
+  width: 20px;
+  transition: all 120ms ease;
+}
+
+.TodoItem > input:hover{
+  transform: scale(1.2);
+}
+
+.TodoItem > .content {
+  flex: 1;
+}
+
+.TodoItem > .date {
+  font-size: 14px;
+  color: gray;
+}
+
+.TodoItem > button {
+  cursor: pointer;
+  color: #808080;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  transition: all 120ms ease;
+}
+
+.TodoItem > button:hover {
+  background-color: #ddd;
+}
