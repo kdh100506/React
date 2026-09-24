@@ -1,10 +1,31 @@
-import './Editer.css'
+import { useRef, useState } from 'react';
+import './Editer.css';
 
-function Editer() {
+function Editer({ onCreate }) {
+  const [content, setContent] = useState('');
+  const contentRef = useRef();
+  const onChangeContent = (e) => {
+    setContent(e.target.value);
+  };
+  const onKeydown = (e) => {
+    if (e.keyCode === 13) {
+      onSubmit();
+    }
+  };
+  const onSubmit = () => {
+    if (content === '') {
+      contentRef.current.focus();
+      return;
+    }
+    onCreate(content);
+    setContent('');
+  };
   return (
     <div className="Editer">
-      <input type="text" placeholder="새로운 Todo"/>
-      <button type="button">추가</button>
+      <input type="text" placeholder="새로운 Todo" value={content} onChange={onChangeContent} ref={contentRef} onKeyDown={onKeydown} />
+      <button type="button" onClick={onSubmit}>
+        추가
+      </button>
     </div>
   );
 }

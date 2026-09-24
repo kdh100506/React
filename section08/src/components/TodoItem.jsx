@@ -1,11 +1,11 @@
 import './TodoItem.css';
 
-function TodoItem() {
+function TodoItem({id, isDone, content, date}) {
   return (
     <div className='TodoItem'>
-      <input type="checkbox" />
-      <div className='content'>Todo</div>
-      <div className='date'>Date</div>
+      <input checked={isDone} type="checkbox" readOnly/>
+      <div className='content'>{content}</div>
+      <div className='date'>{new Date(date).toLocaleDateString()}</div>
       <button type="button">삭제</button>
     </div>
   );
