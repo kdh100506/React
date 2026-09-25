@@ -1,11 +1,12 @@
-import './TodoItem.css'
+import { useState } from 'react';
+import './TodoItem.css';
 
-function TodoItem() {
+function TodoItem({ id, isDone, content, date }) {
   return (
-    <div className='TodoItem'>
-      <input type="checkbox" />
-      <div className='content'>Todo</div>
-      <di className='date'>Date</di>
+    <div className="TodoItem">
+      <input type="checkbox" checked={isDone} readOnly/>
+      <div className="content">{content}</div>
+      <di className="date">{new Date(date).toLocaleDateString()}</di>
       <button type="button">삭제</button>
     </div>
   );

@@ -3,7 +3,6 @@ import './App.css';
 import Editer from './components/Editer';
 import Header from './components/Header';
 import List from './components/List';
-import { data } from 'motion/react-client';
 
 const mockData = [
   {
@@ -29,7 +28,7 @@ const mockData = [
 function App() {
   const [todos, setTodos] = useState(mockData);
 
-  const idRef = useRef(3)
+  const idRef = useRef(3);
 
   const onCreate = (content) => {
     const newTodo = {
@@ -41,11 +40,25 @@ function App() {
     setTodos([newTodo, ...todos]);
   };
 
+  const onUpdate = (TargetId) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === TargetId) {
+          return {
+            ...todo,
+            isDone: !todo.isDone,
+          };
+        }
+        return todo
+      }),
+    );
+  };
+
   return (
     <div className="App">
       <Header></Header>
       <Editer onCreate={onCreate}></Editer>
-      <List></List>
+      <List todos={todos}></List>
     </div>
   );
 }
