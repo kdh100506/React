@@ -5,14 +5,31 @@ import Header from './components/Header';
 import List from './components/List';
 
 const mockData = [
-  { id: 0, isDone: false, content: '집가고 싶다', date: new Date().getTime() },
-  { id: 1, isDone: false, content: '너무 집가고 싶다', date: new Date().getTime() },
-  { id: 2, isDone: false, content: '너무 너무 집가고 싶다', date: new Date().getTime() },
+  {
+    id: 0,
+    isDone: false,
+    content: 'A',
+    date: new Date().getTime(),
+  },
+  {
+    id: 1,
+    isDone: false,
+    content: 'B',
+    date: new Date().getTime(),
+  },
+  {
+    id: 2,
+    isDone: false,
+    content: 'C',
+    date: new Date().getTime(),
+  },
 ];
 
 function App() {
-  const [todos, setTodos] = useState([mockData]);
-  const idRef = useRef(3)
+  const [todos, setTodos] = useState(mockData);
+
+  const idRef = useRef(3);
+
   const onCreate = (content) => {
     const newTodo = {
       id: idRef.current++,
@@ -20,14 +37,32 @@ function App() {
       content: content,
       date: new Date().getTime(),
     };
-    setTodos([newTodo, ...todos])
+    setTodos([newTodo, ...todos]);
+  };
+
+  // const onUpdate = (TargetId) => {
+  //   setTodos(
+  //     todos.map((todo) => {
+  //       if (todo.id === TargetId) {
+  //         return {
+  //           ...todo,
+  //           isDone: !todo.isDone,
+  //         };
+  //       }
+  //       return todo
+  //     }),
+  //   );
+  // };
+
+  const onUpdate = (TargetId) => {
+    setTodos(todos.map((todo) => (todo.id === TargetId ? { ...todo, isDone: !todo.isDone } : todo)));
   };
 
   return (
     <div className="App">
       <Header></Header>
       <Editer onCreate={onCreate}></Editer>
-      <List todos={todos}></List>
+      <List todos={todos} onUpdate={onUpdate}></List>
     </div>
   );
 }

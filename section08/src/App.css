@@ -1,12 +1,7 @@
-/* body{
-  display: flex;
-  justify-content: center;
-} */
-
-.App {
+.App{
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 500px;
   margin: 0 auto;
+  width: 500px;
 }

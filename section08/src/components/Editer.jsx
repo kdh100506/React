@@ -3,15 +3,19 @@ import './Editer.css';
 
 function Editer({ onCreate }) {
   const [content, setContent] = useState('');
-  const contentRef = useRef();
+
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
+
+  const contentRef = useRef();
+
   const onKeydown = (e) => {
     if (e.keyCode === 13) {
       onSubmit();
     }
   };
+
   const onSubmit = () => {
     if (content === '') {
       contentRef.current.focus();
@@ -20,9 +24,10 @@ function Editer({ onCreate }) {
     onCreate(content);
     setContent('');
   };
+
   return (
     <div className="Editer">
-      <input type="text" placeholder="새로운 Todo" value={content} onChange={onChangeContent} ref={contentRef} onKeyDown={onKeydown} />
+      <input type="text" placeholder="새로운 Todo" value={content} onChange={onChangeContent} ref={contentRef} onKeyDown={onKeydown}></input>
       <button type="button" onClick={onSubmit}>
         추가
       </button>
