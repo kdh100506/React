@@ -40,25 +40,29 @@ function App() {
     setTodos([newTodo, ...todos]);
   };
 
+  // const onUpdate = (TargetId) => {
+  //   setTodos(
+  //     todos.map((todo) => {
+  //       if (todo.id === TargetId) {
+  //         return {
+  //           ...todo,
+  //           isDone: !todo.isDone,
+  //         };
+  //       }
+  //       return todo
+  //     }),
+  //   );
+  // };
+
   const onUpdate = (TargetId) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === TargetId) {
-          return {
-            ...todo,
-            isDone: !todo.isDone,
-          };
-        }
-        return todo
-      }),
-    );
+    setTodos(todos.map((todo) => (todo.id === TargetId ? { ...todo, isDone: !todo.isDone } : todo)));
   };
 
   return (
     <div className="App">
       <Header></Header>
       <Editer onCreate={onCreate}></Editer>
-      <List todos={todos}></List>
+      <List todos={todos} onUpdate={onUpdate}></List>
     </div>
   );
 }
