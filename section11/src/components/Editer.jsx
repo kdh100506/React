@@ -1,7 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
 import './Editer.css';
+import { todoContext } from '../App';
 
-function Editer({ onCreate }) {
+function Editer() {
+  const { onCreate } = useContext(todoContext);
   const [content, setContent] = useState('');
 
   const onChangeContent = (e) => {

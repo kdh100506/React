@@ -1,7 +1,10 @@
-import { memo } from 'react';
+import { memo, useContext } from 'react';
 import './TodoItem.css';
+import { todoContext } from '../App';
 
-function TodoItem({ id, isDone, content, date, onUpdate, onDelete }) {
+function TodoItem({ id, isDone, content, date }) {
+  const { onUpdate, onDelete } = useContext(todoContext);
+
   const onChangeCheckBox = () => {
     onUpdate(id);
   };
@@ -21,17 +24,5 @@ function TodoItem({ id, isDone, content, date, onUpdate, onDelete }) {
     </div>
   );
 }
-
-// useCallback을 사용 안할시
-// export default memo(TodoItem, (prevProps, nextProps) => {
-//   // True면 리렌더링 X, False면 리렌더링 O
-
-//   if (prevProps.id !== nextProps.id) return false;
-//   if (prevProps.isDone !== nextProps.isDone) return false;
-//   if (prevProps.content !== nextProps.content) return false;
-//   if (prevProps.date !== nextProps.date) return false;
-
-//   return true;
-// });
 
 export default memo(TodoItem);

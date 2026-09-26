@@ -13,4 +13,3 @@ function Header() {
 const memoizedHeader = memo(Header);
 
 export default memoizedHeader;
-// 또는 export default memo(Header)
