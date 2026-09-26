@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import './App.css';
 import Editer from './components/Editer';
 import Header from './components/Header';
@@ -45,7 +45,33 @@ function App() {
 
   const idRef = useRef(3);
 
-  const onCreate = (content) => {
+  // const onCreate = (content) => {
+  //   dispatch({
+  //     type: 'CREATE',
+  //     data: {
+  //       id: idRef.current++,
+  //       isDone: false,
+  //       content: content,
+  //       date: new Date().getTime(),
+  //     },
+  //   });
+  // };
+
+  // const onUpdate = (targetId) => {
+  //   dispatch({
+  //     type: 'UPDATE',
+  //     targetId: targetId,
+  //   });
+  // };
+
+  // const onDelete = (targetId) => {
+  //   dispatch({
+  //     type: 'DELETE',
+  //     targetId: targetId,
+  //   });
+  // };
+
+  const onCreate = useCallback((content) => {
     dispatch({
       type: 'CREATE',
       data: {
@@ -55,21 +81,21 @@ function App() {
         date: new Date().getTime(),
       },
     });
-  };
+  }, []);
 
-  const onUpdate = (targetId) => {
+  const onUpdate = useCallback((targetId) => {
     dispatch({
       type: 'UPDATE',
       targetId: targetId,
     });
-  };
+  }, []);
 
-  const onDelete = (targetId) => {
+  const onDelete = useCallback((targetId) => {
     dispatch({
       type: 'DELETE',
       targetId: targetId,
     });
-  };
+  }, []);
 
   return (
     <div className="App">
