@@ -6,6 +6,11 @@
   padding: 10px 20px;
   font-size: 18px;
   white-space: nowrap;
+  transition: all 120ms ease;
+}
+
+.Button:hover {
+  background-color: rgb(210, 210, 210);
 }
 
 .Button_POSITIVE {
@@ -13,7 +18,15 @@
   color: #fff;
 }
 
+.Button_POSITIVE:hover {
+  background-color: rgb(83, 167, 83);
+}
+
 .Button_NEGATIVE {
   background-color: rgb(253, 86, 95);
   color: #fff;
+}
+
+.Button_NEGATIVE:hover {
+  background-color: rgb(220, 74, 81);
 }
