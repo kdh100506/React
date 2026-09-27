@@ -4,7 +4,8 @@ import Home from './pages/Home';
 import New from './pages/New';
 import Diary from './pages/Diary';
 import Notfound from './pages/Notfound';
-import getEmotionImage from './util/get.emotion-image';
+import Button from './components/Button';
+import Header from './components/Header';
 
 function App() {
   const nav = useNavigate();
@@ -13,19 +14,10 @@ function App() {
   };
   return (
     <>
-      <div>
-        <img src={getEmotionImage(1)} alt="이모션 이미지 1" />
-        <img src={getEmotionImage(2)} alt="이모션 이미지 2" />
-        <img src={getEmotionImage(3)} alt="이모션 이미지 3" />
-        <img src={getEmotionImage(4)} alt="이모션 이미지 4" />
-        <img src={getEmotionImage(5)} alt="이모션 이미지 5" />
-      </div>
-      <Link to={'/'}>Home</Link>
-      <Link to={'/new'}>New</Link>
-      <Link to={'/diary'}>Diary</Link>
-      <button onClick={onClickButton} value={'/new'}>
-        New 페이지로 이동
-      </button>
+      <Header title={'Header'} leftChild={<Button text={'left'}></Button>} rightChild={<Button text={'right'}></Button>}></Header>
+      <Button text={123} onClick={() => console.log(123)}></Button>
+      <Button text={123} type={'POSITIVE'} onClick={() => console.log(123)}></Button>
+      <Button text={123} type={'NEGATIVE'} onClick={() => console.log(123)}></Button>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/new" element={<New></New>}></Route>
