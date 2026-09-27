@@ -6,8 +6,6 @@ import New from './pages/New';
 import Diary from './pages/Diary';
 import Notfound from './pages/Notfound';
 import Edit from './pages/Edit';
-import Button from './components/Button';
-import Header from './components/Header';
 
 const mockData = [
   {
@@ -78,28 +76,6 @@ function App() {
 
   return (
     <>
-      <Header title={'Header'} leftChild={<Button text={'left'}></Button>} rightChild={<Button text={'right'}></Button>}></Header>
-      <button
-        onClick={() => {
-          onCreate(new Date().getTime(), 1, 'hello');
-        }}
-      >
-        일기 추가 테스트
-      </button>
-      <button
-        onClick={() => {
-          onUpdate(1, new Date().getTime(), 3, '수정된 일기 입니다.');
-        }}
-      >
-        일기 수정 테스트
-      </button>
-      <button
-        onClick={() => {
-          onDelete(1);
-        }}
-      >
-        일기 삭제 테스트
-      </button>
       <DiaryStateContext.Provider value={data}>
         <DiaryDispatchContext value={{ onCreate, onUpdate, onDelete }}>
           <Routes>
