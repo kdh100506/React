@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Controller from './components/Controller';
 import Viewer from './components/Viewer';
-import Even from './components/even';
+import Even from './components/Even';
 
 function App() {
   const [count, setCount] = useState(0);

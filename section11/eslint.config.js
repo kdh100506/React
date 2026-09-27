@@ -13,8 +13,10 @@ export default defineConfig([
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
-    'no-umused-vars': 'off',
-    'react/prop-types': 'off',
-    'react-refresh/only-export-components': 'off',
+    rules: {
+      'no-unused-vars': 'off',
+      'react/prop-types': 'off',
+      'react-refresh/only-export-components': 'off',
+    },
   },
 ]);
