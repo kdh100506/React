@@ -9,7 +9,7 @@ function New() {
     <div>
       <Header
         title={'새 일기 쓰기'}
-        leftChild={<Button text={'< 뒤로가기 '} onClick={() => nav(`/`)}></Button>}
+        leftChild={<Button text={'< 뒤로가기 '} onClick={() => nav(-1)}></Button>}
       ></Header>
       <Editor></Editor>
     </div>
