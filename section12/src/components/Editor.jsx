@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from './Button';
 import './Editor.css';
 import EmotionItem from './EmotionItem';
+import { useNavigate } from 'react-router-dom';
 
 const emotionList = [
   {
@@ -27,6 +28,7 @@ const emotionList = [
 ];
 
 function Editor() {
+  const nav = useNavigate();
   const [input, setInput] = useState({
     createdDate: new Date(),
     emotionId: 3,
@@ -93,10 +95,15 @@ function Editor() {
       </section>
       <section className="content_section">
         <h4>오늘의 일기</h4>
-        <textarea placeholder="오늘은 어땠나요?"></textarea>
+        <textarea
+          placeholder="오늘은 어땠나요?"
+          name="content"
+          value={input.content}
+          onChange={onChangeInput}
+        ></textarea>
       </section>
       <section className="button_section">
-        <Button text={'취소하기'}></Button>
+        <Button text={'취소하기'} onClick={() => nav(-1)}></Button>
         <Button text={'작성완료'} type={'POSITIVE'}></Button>
       </section>
     </div>
