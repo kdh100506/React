@@ -27,7 +27,7 @@ const emotionList = [
   },
 ];
 
-function Editor() {
+function Editor({onSubmit}) {
   const nav = useNavigate();
   const [input, setInput] = useState({
     createdDate: new Date(),
@@ -61,6 +61,10 @@ function Editor() {
       [name]: value,
     });
   };
+
+  const onClickSubmitButton = () => {
+    onSubmit(input)
+  }
 
   return (
     <div className="Editor">
@@ -104,7 +108,7 @@ function Editor() {
       </section>
       <section className="button_section">
         <Button text={'취소하기'} onClick={() => nav(-1)}></Button>
-        <Button text={'작성완료'} type={'POSITIVE'}></Button>
+        <Button text={'작성완료'} type={'POSITIVE'} onClick={onClickSubmitButton}></Button>
       </section>
     </div>
   );
