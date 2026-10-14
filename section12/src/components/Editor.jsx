@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from './Button';
 import './Editor.css';
 import EmotionItem from './EmotionItem';
@@ -27,13 +27,24 @@ const emotionList = [
   },
 ];
 
-function Editor({onSubmit}) {
+function Editor({ onSubmit, initData }) {
   const nav = useNavigate();
+
+  useEffect(() => {
+    if (initData) {
+      setInput({
+        ...initData,
+        createdDate: new Date(Number(initData.createdDate)),
+      });
+    }
+  }, [initData]);
+
   const [input, setInput] = useState({
     createdDate: new Date(),
     emotionId: 3,
     content: '',
   });
+
   const getStringedDate = (targetDate) => {
     let year = targetDate.getFullYear();
     let month = targetDate.getMonth() + 1;
@@ -49,6 +60,7 @@ function Editor({onSubmit}) {
 
     return `${year}-${month}-${date}`;
   };
+
   const onChangeInput = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -63,8 +75,8 @@ function Editor({onSubmit}) {
   };
 
   const onClickSubmitButton = () => {
-    onSubmit(input)
-  }
+    onSubmit(input);
+  };
 
   return (
     <div className="Editor">
